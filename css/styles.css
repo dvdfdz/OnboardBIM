@@ -11388,13 +11388,13 @@ hr.divider-light {
     background-color: #000;
   }
   #mainNav.navbar-shrink .navbar-brand {
-    color: #212529;
+    color: #fff;
   }
   #mainNav.navbar-shrink .navbar-brand:hover {
     color: #f4623a;
   }
   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
-    color: #212529;
+    color: #fff;
   }
   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
     color: #f4623a;
