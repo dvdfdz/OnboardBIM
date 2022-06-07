@@ -11385,7 +11385,7 @@ hr.divider-light {
   }
   #mainNav.navbar-shrink {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    background-color: #191919;
+    background-color: #fff;
   }
   #mainNav.navbar-shrink .navbar-brand {
     color: #fff;
