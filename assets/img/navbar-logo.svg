@@ -273,7 +273,7 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="1.9593693"
-     inkscape:cx="121.97803"
+     inkscape:cx="210.78211"
      inkscape:cy="2.0414733"
      inkscape:window-width="1366"
      inkscape:window-height="705"
@@ -285,7 +285,7 @@
      id="style2">.cls-1{fill:#fed136;}</style>
   <text
      xml:space="preserve"
-     style="font-size:34.3852px;font-family:'Bauhaus 93';-inkscape-font-specification:'Bauhaus 93, ';text-align:center;text-anchor:middle;fill:#a8a800;fill-opacity:1;stroke:#a8a800;stroke-width:0.1;stroke-dasharray:none"
+     style="font-size:34.3852px;font-family:'Bauhaus 93';-inkscape-font-specification:'Bauhaus 93, ';text-align:center;text-anchor:middle;fill:#a8a800;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none"
      x="31.310669"
      y="30.353216"
      id="text297-9"><tspan
@@ -293,7 +293,7 @@
        id="tspan295-7"
        x="31.310669"
        y="30.353216"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:34.3852px;font-family:Shotgun;-inkscape-font-specification:'Shotgun Bold';fill:#a8a800;fill-opacity:1;stroke:#a8a800;stroke-width:0.1;stroke-dasharray:none">THE</tspan></text>
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:34.3852px;font-family:Shotgun;-inkscape-font-specification:'Shotgun Bold';fill:#a8a800;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none">THE</tspan></text>
   <path
      style="fill:none;stroke:#a8a800;stroke-width:0.867539;stroke-opacity:1"
      d="M 73.817693,35.317608 C 73.59955,35.181277 73.36148,34.955605 73.288645,34.816114 73.215805,34.676624 73.156219,33.879357 73.156219,33.04441 v -1.518082 l -0.587501,-0.117077 c -0.459492,-0.09156 -0.647074,-0.208075 -0.860918,-0.534715 -0.559577,-0.85474 -0.521583,-2.178958 0.08276,-2.884453 l 0.351798,-0.410681 0.006,-4.140342 c 0.0054,-3.75755 0.13134,-7.517288 0.331013,-9.88189 0.07479,-0.885702 0.07137,-0.898885 -0.412115,-1.585024 l -0.487531,-0.691896 -0.817243,0.03036 c -1.101777,0.04095 -1.216175,-0.12246 -1.216175,-1.7371256 0,-1.4794111 0.147404,-1.6940742 1.163281,-1.6940742 0.984341,0 1.077387,0.1566601 1.077387,1.8140042 V 11.04076 l 0.448404,0.08623 c 0.246622,0.04742 0.472862,0.06116 0.502753,0.03051 0.02989,-0.03064 0.24745,-0.805999 0.48346,-1.7230236 0.97508,-3.7886855 2.262589,-6.2238226 4.002209,-7.5695984 1.619966,-1.25321145 2.598062,-1.40435015 9.251993,-1.42965415 7.269719,-0.027645 9.281575,0.3387275 11.433353,2.08208355 1.736107,1.406576 3.045293,4.2496261 3.512073,7.6268256 0.1532,1.108474 0.15828,1.114297 0.84817,0.972874 l 0.389,-0.07975 V 9.6694934 c 0,-1.6403474 0.092,-1.7900854 1.09901,-1.7900854 0.99161,0 1.14166,0.2226555 1.14166,1.6940744 0,1.6114836 -0.11566,1.7780186 -1.20671,1.7374776 -0.77053,-0.02863 -0.82172,-0.01175 -1.11003,0.365829 -0.75365,0.987024 -0.88306,1.367468 -0.77582,2.280589 0.20696,1.761959 0.3527,5.73356 0.35333,9.627718 6.5e-4,3.884163 0.01,4.039727 0.25249,4.264823 0.35195,0.326461 0.66512,1.503829 0.56712,2.132042 -0.13727,0.879802 -0.39127,1.232515 -1.00969,1.402048 l -0.55617,0.152467 -2.9e-4,1.281334 c -3.7e-4,2.120547 -0.48464,2.67962 -2.241926,2.587941 -1.577231,-0.08229 -1.865673,-0.445332 -1.865673,-2.34832 V 31.83634 l -0.902488,0.0813 c -4.617581,0.415949 -14.622609,0.417985 -18.409138,0.0037 l -0.701635,-0.07676 -0.04763,1.426373 -0.04763,1.426376 -0.462601,0.434525 c -0.448334,0.421127 -0.494321,0.434512 -1.491397,0.43405 -0.799021,-3.83e-4 -1.117386,-0.05584 -1.425422,-0.248353 z"
@@ -360,7 +360,7 @@
      id="path2066-5" />
   <text
      xml:space="preserve"
-     style="font-size:34.3852px;font-family:'Bauhaus 93';-inkscape-font-specification:'Bauhaus 93, ';text-align:center;text-anchor:middle;opacity:1;fill:#a8a800;fill-opacity:1;stroke:#a8a800;stroke-width:0.1;stroke-dasharray:none"
+     style="font-size:34.3852px;font-family:'Bauhaus 93';-inkscape-font-specification:'Bauhaus 93, ';text-align:center;text-anchor:middle;opacity:1;fill:#a8a800;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none"
      x="207.60303"
      y="30.353216"
      id="text297"><tspan
@@ -368,5 +368,5 @@
        id="tspan295"
        x="207.60303"
        y="30.353216"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:34.3852px;font-family:Shotgun;-inkscape-font-specification:'Shotgun Bold';fill:#a8a800;fill-opacity:1;stroke:#a8a800;stroke-width:0.1;stroke-dasharray:none">CAMPERTRY</tspan></text>
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:34.3852px;font-family:Shotgun;-inkscape-font-specification:'Shotgun Bold';fill:#a8a800;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none">CAMPERTRY</tspan></text>
 </svg>
