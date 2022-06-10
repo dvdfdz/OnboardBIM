@@ -11393,7 +11393,7 @@ header {
   background-color: black;
   height: 75vh;
   min-height: 25rem;
-  width: 70%;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -11401,8 +11401,8 @@ header video {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 70%;
+  min-height: 70%;
   width: auto;
   height: auto;
   z-index: 0;
