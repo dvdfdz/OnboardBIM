@@ -11391,15 +11391,15 @@ hr.divider-light {
 header {
   position: relative;
   background-color: black;
-  height: 75vh;
-  min-height: 25rem;
+  height: 85vh;
+  min-height: 50rem;
   width: 100%;
   overflow: hidden;
 }
 
 header video {
   position: absolute;
-  top: 20%;
+  top: 35%;
   left: 50%;
   min-width: 50%;
   min-height: 50%;
@@ -11424,7 +11424,7 @@ header .overlay {
   height: 100%;
   width: 100%;
   background-color: black;
-  opacity: 0.3;
+  opacity: 0.1;
   z-index: 1;
 }
 
