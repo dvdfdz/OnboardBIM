@@ -11396,7 +11396,7 @@ header video {
   min-width: 50%;
   min-height: 50%;
   width: auto;
-  height: auto;
+  height: 300;
   z-index: 0;
   -ms-transform: translateX(-50%) translateY(-50%);
   -moz-transform: translateX(-50%) translateY(-50%);
