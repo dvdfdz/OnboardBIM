@@ -11391,8 +11391,8 @@ hr.divider-light {
 header {
   position: relative;
   background-color: black;
-  height: 75vh;
-  min-height: 85rem;
+  height: 65vh;
+  min-height: 65rem;
   width: 100%;
   overflow: hidden;
 }
