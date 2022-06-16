@@ -11392,7 +11392,7 @@ header {
   position: relative;
   background-color: black;
   height: 75vh;
-  min-height: 75rem;
+  min-height: 100rem;
   width: 100%;
   overflow: hidden;
 }
