@@ -11390,7 +11390,7 @@ hr.divider-light {
 }
 
 header video {
-  position: absolute;
+  position: relative;
   top: 35%;
   left: 50%;
   min-width: 50%;
