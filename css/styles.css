@@ -11390,13 +11390,13 @@ hr.divider-light {
 }
 
 header video {
-  position: relative;
+  position: absolute;
   top: 35%;
   left: 50%;
   min-width: 50%;
   min-height: 50%;
   width: auto;
-  height: 300;
+  height: 50%;
   z-index: 0;
   -ms-transform: translateX(-50%) translateY(-50%);
   -moz-transform: translateX(-50%) translateY(-50%);
