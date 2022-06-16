@@ -11388,7 +11388,14 @@ hr.divider-light {
     color: #f4623a;
   }
 }
-
+header {
+  position: relative;
+  background-color: black;
+  height: 75vh;
+  min-height: 40rem;
+  width: 100%;
+  overflow: hidden;
+}
 header video {
   position: absolute;
   top: 35%;
@@ -11396,7 +11403,7 @@ header video {
   min-width: 50%;
   min-height: 50%;
   width: auto;
-  height: 50%;
+  height: auto;
   z-index: 0;
   -ms-transform: translateX(-50%) translateY(-50%);
   -moz-transform: translateX(-50%) translateY(-50%);
