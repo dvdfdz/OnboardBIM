@@ -11391,14 +11391,14 @@ hr.divider-light {
 header {
   position: relative;
   background-color: black;
-  height: 65vh;
-  min-height: 95rem;
+  height: 75vh;
+  min-height: 25rem;
   width: 100%;
   overflow: hidden;
 }
 header video {
   position: absolute;
-  top: 25%;
+  top: 50%;
   left: 50%;
   min-width: 100%;
   min-height: 100%;
@@ -11409,6 +11409,11 @@ header video {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
+  -moz-transform:scale(0.75);
+  -webkit-transform:scale(0.75);
+  -o-transform:scale(0.75);
+  -ms-transform:scale(0.75);
+  transform:scale(0.75);
 }
 
 header .container {
