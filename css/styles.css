@@ -11391,18 +11391,17 @@ hr.divider-light {
 header {
   position: relative;
   background-color: black;
-  height: 85vh;
-  min-height: 50rem;
+  height: 65vh;
+  min-height: 25rem;
   width: 100%;
   overflow: hidden;
 }
-
 header video {
   position: absolute;
-  top: 35%;
+  top: 25%;
   left: 50%;
-  min-width: 50%;
-  min-height: 50%;
+  min-width: 100%;
+  min-height: 100%;
   width: auto;
   height: auto;
   z-index: 0;
