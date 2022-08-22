@@ -492,7 +492,10 @@ progress {
   font-size: 1.25rem;
   font-weight: 300;
 }
-
+.leadd {
+  font-size: 1.75rem;
+  font-weight: 4;
+}
 .display-1 {
   font-size: calc(1.625rem + 4.5vw);
   font-weight: 300;
@@ -522,7 +525,7 @@ progress {
 }
 @media (min-width: 1200px) {
   .display-3 {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 }
 
