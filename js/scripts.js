@@ -55,47 +55,57 @@ window.addEventListener('DOMContentLoaded', event => {
     new SimpleLightbox({
         elements: '#portfolio a.portfolio-box'
     });
-
-    let slideIndex = [1, 1];
+    let slideIndex = [0, 0];
     let slideId = ["mySlides1", "mySlides2"];
-    let slideIntervals = [3000, 5000]; // Intervalos por slide group
-    let intervalHandles = [null, null]; // Guardar los intervalos para poder detenerlos
+    let timeouts = [null, null];
+    let slideDurations = [[], []];
 
-    showSlides(1, 0);
-    showSlides(1, 1);
+    initSlides(0);
+    initSlides(1);
 
-    startSlideShow(0);
-    startSlideShow(1);
-
-    function plusSlides(n, no) {
-        stopSlideShow(no); // Detener intervalo automático al interactuar
-        showSlides(slideIndex[no] += n, no);
+    function initSlides(no) {
+        let slides = document.getElementsByClassName(slideId[no]);
+        slideDurations[no] = Array.from(slides).map(() =>
+            getRandomDuration(3000, 5000)
+        );
+        slideIndex[no] = 0;
+        setupHoverEvents(no);
+        showSlide(no);
     }
 
-    function showSlides(n, no) {
-        let i;
-        let x = document.getElementsByClassName(slideId[no]);
-        if (n > x.length) { slideIndex[no] = 1 }
-        if (n < 1) { slideIndex[no] = x.length }
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
+    function showSlide(no) {
+        let slides = document.getElementsByClassName(slideId[no]);
+        if (slideIndex[no] >= slides.length) slideIndex[no] = 0;
+        if (slideIndex[no] < 0) slideIndex[no] = slides.length - 1;
+
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
         }
-        x[slideIndex[no] - 1].style.display = "block";
+        slides[slideIndex[no]].style.display = "block";
+
+        // Programar la siguiente slide automáticamente
+        timeouts[no] = setTimeout(() => {
+            slideIndex[no]++;
+            showSlide(no);
+        }, slideDurations[no][slideIndex[no]]);
     }
 
-    function startSlideShow(no) {
-        intervalHandles[no] = setInterval(function () {
-            showSlides(slideIndex[no] += 1, no);
-        }, slideIntervals[no]);
+    function getRandomDuration(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    function stopSlideShow(no) {
-        if (intervalHandles[no]) {
-            clearInterval(intervalHandles[no]);
-            intervalHandles[no] = null;
-        }
+    function setupHoverEvents(no) {
+        let container = document.getElementsByClassName(slideId[no])[0]?.parentElement;
+        if (!container) return;
+
+        container.addEventListener("mouseenter", () => {
+            clearTimeout(timeouts[no]);
+            timeouts[no] = null;
+        });
+
+        container.addEventListener("mouseleave", () => {
+            showSlide(no); // Reanuda desde la misma imagen
+        });
     }
-
-
 
 });
