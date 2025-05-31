@@ -11008,7 +11008,7 @@ header.masthead h1, header.masthead .h1 {
 }
 
 /* Hide the images by default */
-.mySlides {
+.carousel1 {
     display: none;
 }
 
