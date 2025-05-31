@@ -1,70 +1,115 @@
+/*!
+* Start Bootstrap - Creative v7.0.7 (https://startbootstrap.com/theme/creative)
+* Copyright 2013-2023 Start Bootstrap
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
+*/
+//
+// Scripts
+// 
 
-window.addEventListener('DOMContentLoaded', () => {
-    const navbar = document.querySelector('#mainNav');
+window.addEventListener('DOMContentLoaded', event => {
 
-    const navbarShrink = () => {
-        if (!navbar) return;
-        navbar.classList.toggle('navbar-shrink', window.scrollY > 0);
+    // Navbar shrink function
+    var navbarShrink = function () {
+        const navbarCollapsible = document.body.querySelector('#mainNav');
+        if (!navbarCollapsible) {
+            return;
+        }
+        if (window.scrollY === 0) {
+            navbarCollapsible.classList.remove('navbar-shrink')
+        } else {
+            navbarCollapsible.classList.add('navbar-shrink')
+        }
+
     };
 
+    // Shrink the navbar 
     navbarShrink();
+
+    // Shrink the navbar when page is scrolled
     document.addEventListener('scroll', navbarShrink);
 
-    if (navbar) {
+    // Activate Bootstrap scrollspy on the main nav element
+    const mainNav = document.body.querySelector('#mainNav');
+    if (mainNav) {
         new bootstrap.ScrollSpy(document.body, {
             target: '#mainNav',
-            rootMargin: '0px 0px -40%'
+            rootMargin: '0px 0px -40%',
         });
-    }
+    };
 
-    const navbarToggler = document.querySelector('.navbar-toggler');
-    document.querySelectorAll('#navbarResponsive .nav-link').forEach(link => {
-        link.addEventListener('click', () => {
+    // Collapse responsive navbar when toggler is visible
+    const navbarToggler = document.body.querySelector('.navbar-toggler');
+    const responsiveNavItems = [].slice.call(
+        document.querySelectorAll('#navbarResponsive .nav-link')
+    );
+    responsiveNavItems.map(function (responsiveNavItem) {
+        responsiveNavItem.addEventListener('click', () => {
             if (window.getComputedStyle(navbarToggler).display !== 'none') {
                 navbarToggler.click();
             }
         });
     });
 
-    new SimpleLightbox({ elements: '#portfolio a.portfolio-box' });
-
-    const slideIndex = [0, 0];
-    const slideId = ["mySlides1", "mySlides2"];
-    const timeouts = [null, null];
-    const durations = [[], []];
-
-    slideId.forEach((id, no) => {
-        const slides = document.getElementsByClassName(id);
-        durations[no] = Array.from(slides, () => getRandomDuration(3000, 5000));
-        Array.from(slides).forEach(slide => slide.classList.add("slide-fade"));
-        setupHoverEvents(no);
-        showSlide(no);
+    // Activate SimpleLightbox plugin for portfolio items
+    new SimpleLightbox({
+        elements: '#portfolio a.portfolio-box'
     });
 
-    function showSlide(no) {
-        const slides = document.getElementsByClassName(slideId[no]);
-        if (!slides.length) return;
 
-        Array.from(slides).forEach(slide => slide.classList.remove("slide-visible"));
+    const slideIndex = Array(6).fill(1);
+    const slideClasses = ["mySlides1", "mySlides2", "mySlides3", "mySlides4", "mySlides5", "mySlides6"];
+    const carouselContainers = ["carousel1", "carousel2", "carousel3", "carousel4", "carousel5", "carousel6"];
 
-        slideIndex[no] = (slideIndex[no] + slides.length) % slides.length;
-        slides[slideIndex[no]].classList.add("slide-visible");
+    let timeoutIds = Array(6).fill(null);
 
-        timeouts[no] = setTimeout(() => {
-            slideIndex[no]++;
-            showSlide(no);
-        }, durations[no][slideIndex[no]]);
+    // Inicializar cada carrusel mostrando la primera slide
+    slideClasses.forEach((_, i) => showSlides(1, i));
+
+    // Iniciar autoSlide y agregar listeners para pausar/reanudar al pasar el ratón
+    slideClasses.forEach((_, i) => {
+        startAutoSlide(i);
+        const container = document.querySelector(`.${carouselContainers[i]}`);
+        if (container) {
+            container.addEventListener("mouseenter", () => pauseAutoSlide(i));
+            container.addEventListener("mouseleave", () => startAutoSlide(i));
+        }
+    });
+
+    function plusSlides(n, no) {
+        showSlides(slideIndex[no] += n, no);
     }
 
-    function getRandomDuration(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+    function showSlides(n, no) {
+        const slides = document.getElementsByClassName(slideClasses[no]);
+        const total = slides.length;
+
+        slideIndex[no] = ((n - 1 + total) % total) + 1;
+
+        Array.from(slides).forEach(slide => {
+            slide.style.display = "none";
+        });
+
+        slides[slideIndex[no] - 1].style.display = "block";
     }
 
-    function setupHoverEvents(no) {
-        const container = document.getElementsByClassName(slideId[no])[0]?.parentElement;
-        if (!container) return;
-
-        container.addEventListener("mouseenter", () => clearTimeout(timeouts[no]));
-        container.addEventListener("mouseleave", () => showSlide(no));
+    function autoSlide(no) {
+        plusSlides(1, no);
+        const interval = Math.floor(Math.random() * 2000) + 3000;
+        timeoutIds[no] = setTimeout(() => autoSlide(no), interval);
     }
+
+    function startAutoSlide(no) {
+        // Si ya hay un timeout pendiente, no hacer nada
+        if (timeoutIds[no] !== null) return;
+        autoSlide(no);
+    }
+
+    function pauseAutoSlide(no) {
+        clearTimeout(timeoutIds[no]);
+        timeoutIds[no] = null;
+    }
+
+
+
 });
