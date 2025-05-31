@@ -57,59 +57,63 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 
-    const slideIndex = Array(6).fill(1);
-    const slideClasses = ["mySlides1", "mySlides2", "mySlides3", "mySlides4", "mySlides5", "mySlides6"];
-    const carouselContainers = ["carousel1", "carousel2", "carousel3", "carousel4", "carousel5", "carousel6"];
+    let slideIndex = [0, 0];
+    let slideId = ["mySlides1", "mySlides2"];
+    let timeouts = [null, null];
+    let slideDurations = [[], []];
 
-    let timeoutIds = Array(6).fill(null);
+    initSlides(0);
+    initSlides(1);
 
-    // Inicializar cada carrusel mostrando la primera slide
-    slideClasses.forEach((_, i) => showSlides(1, i));
+    function initSlides(no) {
+        let slides = document.getElementsByClassName(slideId[no]);
+        slideDurations[no] = Array.from(slides).map(() =>
+            getRandomDuration(3000, 5000)
+        );
+        slideIndex[no] = 0;
+        setupHoverEvents(no);
 
-    // Iniciar autoSlide y agregar listeners para pausar/reanudar al pasar el ratón
-    slideClasses.forEach((_, i) => {
-        startAutoSlide(i);
-        const container = document.querySelector(`.${carouselContainers[i]}`);
-        if (container) {
-            container.addEventListener("mouseenter", () => pauseAutoSlide(i));
-            container.addEventListener("mouseleave", () => startAutoSlide(i));
+        for (let slide of slides) {
+            slide.classList.add("slide-fade");
         }
-    });
 
-    function plusSlides(n, no) {
-        showSlides(slideIndex[no] += n, no);
+        showSlide(no);
     }
 
-    function showSlides(n, no) {
-        const slides = document.getElementsByClassName(slideClasses[no]);
-        const total = slides.length;
+    function showSlide(no) {
+        let slides = document.getElementsByClassName(slideId[no]);
+        if (slideIndex[no] >= slides.length) slideIndex[no] = 0;
+        if (slideIndex[no] < 0) slideIndex[no] = slides.length - 1;
 
-        slideIndex[no] = ((n - 1 + total) % total) + 1;
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("slide-visible");
+        }
 
-        Array.from(slides).forEach(slide => {
-            slide.style.display = "none";
+        slides[slideIndex[no]].classList.add("slide-visible");
+
+        timeouts[no] = setTimeout(() => {
+            slideIndex[no]++;
+            showSlide(no);
+        }, slideDurations[no][slideIndex[no]]);
+    }
+
+
+    function getRandomDuration(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function setupHoverEvents(no) {
+        let container = document.getElementsByClassName(slideId[no])[0]?.parentElement;
+        if (!container) return;
+
+        container.addEventListener("mouseenter", () => {
+            clearTimeout(timeouts[no]);
+            timeouts[no] = null;
         });
 
-        slides[slideIndex[no] - 1].style.display = "block";
+        container.addEventListener("mouseleave", () => {
+            showSlide(no); // Reanuda desde la misma imagen
+        });
     }
-
-    function autoSlide(no) {
-        plusSlides(1, no);
-        const interval = Math.floor(Math.random() * 2000) + 3000;
-        timeoutIds[no] = setTimeout(() => autoSlide(no), interval);
-    }
-
-    function startAutoSlide(no) {
-        // Si ya hay un timeout pendiente, no hacer nada
-        if (timeoutIds[no] !== null) return;
-        autoSlide(no);
-    }
-
-    function pauseAutoSlide(no) {
-        clearTimeout(timeoutIds[no]);
-        timeoutIds[no] = null;
-    }
-
-
 
 });
