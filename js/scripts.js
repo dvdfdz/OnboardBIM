@@ -57,36 +57,47 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 
-let slideIndex = [1, 1];
+    let slideIndex = [1, 1];
     let slideId = ["mySlides1", "mySlides2"];
 
-    // Initial show
+    // Mostrar inicialmente
     showSlides(1, 0);
     showSlides(1, 1);
 
-    // Advance to next slide
+    // Avanzar a la siguiente slide
     function plusSlides(n, no) {
         showSlides(slideIndex[no] += n, no);
     }
 
-    // Show the current slide
+    // Mostrar slide actual con transición
     function showSlides(n, no) {
         let i;
         let x = document.getElementsByClassName(slideId[no]);
         if (n > x.length) { slideIndex[no] = 1 }
         if (n < 1) { slideIndex[no] = x.length }
+
         for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
+            x[i].style.opacity = 0;
+            x[i].style.transition = "opacity 1s ease";
+            x[i].style.zIndex = 0;
         }
-        x[slideIndex[no] - 1].style.display = "block";
+
+        let currentSlide = x[slideIndex[no] - 1];
+        currentSlide.style.opacity = 1;
+        currentSlide.style.zIndex = 1;
     }
 
-    // ⏱️ Auto-advance both slideshows every 3 seconds
-    setInterval(() => {
-        plusSlides(1, 0); // advance slideshow 1
-        plusSlides(1, 1); // advance slideshow 2
-    }, 3000); // 3000 ms = 3 seconds
+    // 🔁 Avanzar automáticamente con intervalo aleatorio entre 3 y 5 segundos
+    function autoAdvance() {
+        plusSlides(1, 0);
+        plusSlides(1, 1);
 
+        // Generar un nuevo intervalo aleatorio
+        const nextInterval = Math.floor(Math.random() * 2000) + 3000; // entre 3000 y 5000 ms
+        setTimeout(autoAdvance, nextInterval);
+    }
+
+    autoAdvance(); // Iniciar auto-advance
 
 
 
