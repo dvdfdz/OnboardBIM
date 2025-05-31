@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
 
     let slideIndex = [0, 0,];
-    let slideId = ["mySlides1", "mySlides2", "mySlides3"];
+    let slideId = ["mySlides1", "mySlides2",];
 
     function showSlides(no) {
         const slides = document.getElementsByClassName(slideId[no]);
