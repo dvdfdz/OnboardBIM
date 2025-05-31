@@ -11008,10 +11008,7 @@ header.masthead h1, header.masthead .h1 {
 }
 
 /* Hide the images by default */
-.mySlides1 {
-    display: none;
-}
-.mySlides2 {
+.mySlides {
     display: none;
 }
 
