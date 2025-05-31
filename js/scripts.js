@@ -1,6 +1,4 @@
 
-/*! Optimized scripts.js */
-
 window.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('#mainNav');
 
