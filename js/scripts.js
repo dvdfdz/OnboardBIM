@@ -72,6 +72,11 @@ window.addEventListener('DOMContentLoaded', event => {
         );
         slideIndex[no] = 0;
         setupHoverEvents(no);
+
+        for (let slide of slides) {
+            slide.classList.add("slide-fade");
+        }
+
         showSlide(no);
     }
 
@@ -81,16 +86,17 @@ window.addEventListener('DOMContentLoaded', event => {
         if (slideIndex[no] < 0) slideIndex[no] = slides.length - 1;
 
         for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+            slides[i].classList.remove("slide-visible");
         }
-        slides[slideIndex[no]].style.display = "block";
 
-        // Programar la siguiente slide automáticamente
+        slides[slideIndex[no]].classList.add("slide-visible");
+
         timeouts[no] = setTimeout(() => {
             slideIndex[no]++;
             showSlide(no);
         }, slideDurations[no][slideIndex[no]]);
     }
+
 
     function getRandomDuration(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;

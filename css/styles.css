@@ -11054,3 +11054,19 @@ header.masthead h1, header.masthead .h1 {
         opacity: 1
     }
 }
+
+
+.slide-fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.8s ease-in-out;
+    opacity: 0;
+    z-index: 0;
+}
+
+.slide-visible {
+    opacity: 1;
+    z-index: 1;
+}
