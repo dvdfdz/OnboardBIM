@@ -1,4 +1,4 @@
-﻿/*!
+/*!
 * Start Bootstrap - Creative v7.0.7 (https://startbootstrap.com/theme/creative)
 * Copyright 2013-2023 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
@@ -56,53 +56,4 @@ window.addEventListener('DOMContentLoaded', event => {
         elements: '#portfolio a.portfolio-box'
     });
 
-
-    let slideIndex = [0, 0, 0];
-    let slideId = ["mySlides1", "mySlides2", "mySlides3",];
-
-    function showSlides(no) {
-        const slides = document.getElementsByClassName(slideId[no]);
-        const total = slides.length;
-
-        for (let i = 0; i < total; i++) {
-            slides[i].classList.remove("slide-active", "slide-exit");
-            slides[i].style.left = "100%"; // Ocultar fuera de vista
-        }
-
-        // Slide saliente
-        const prevIndex = slideIndex[no];
-        const prevSlide = slides[prevIndex];
-        if (prevSlide) {
-            prevSlide.classList.add("slide-exit");
-            prevSlide.style.left = "-100%";
-        }
-
-        // Actualizar índice
-        slideIndex[no] = (prevIndex + 1) % total;
-
-        // Slide entrante
-        const currentSlide = slides[slideIndex[no]];
-        currentSlide.classList.add("slide-active");
-        currentSlide.style.left = "0";
-    }
-
-    function autoAdvance(no) {
-        showSlides(no);
-
-        const nextInterval = Math.floor(Math.random() * 2000) + 3000; // 3 a 5 seg
-        setTimeout(() => autoAdvance(no), nextInterval);
-    }
-
-    autoAdvance(0); // Para mySlides1
-    autoAdvance(1); // Para mySlides2
-    autoAdvance(2); // Para mySlides3
-
-
-
-
-
-
-
 });
-
-
