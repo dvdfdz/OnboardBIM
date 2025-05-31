@@ -55,6 +55,8 @@ window.addEventListener('DOMContentLoaded', event => {
     new SimpleLightbox({
         elements: '#portfolio a.portfolio-box'
     });
+
+
     let slideIndex = [0, 0];
     let slideId = ["mySlides1", "mySlides2"];
     let timeouts = [null, null];
