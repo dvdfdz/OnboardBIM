@@ -10995,12 +10995,12 @@ header.masthead h1, header.masthead .h1 {
 }
 * {box-sizing:border-box}
 
-/* Slideshow container 
+/* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
   position: relative;
   margin: auto;
-}*/
+}
 
 /* Hide the images by default */
 .mySlides {

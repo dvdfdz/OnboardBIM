@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
 
     let slideIndex = [0, 0];
-    let slideId = ["mySlides1", "mySlides2"];
+    let slideId = ["mySlides1", "mySlides2", "mySlides3" ];
 
     function showSlides(no) {
         const slides = document.getElementsByClassName(slideId[no]);
@@ -95,6 +95,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
     autoAdvance(0); // Para mySlides1
     autoAdvance(1); // Para mySlides2
+    autoAdvance(2); // Para mySlides3
 
 
 
