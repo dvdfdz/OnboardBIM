@@ -57,12 +57,18 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
     let slideIndex = [1, 1];
-    /* Class the members of each slideshow group with different CSS classes */
-    let slideId = ["mySlides1", "mySlides2"]
+    let slideId = ["mySlides1", "mySlides2"];
+    let slideIntervals = [3000, 5000]; // Intervalos por slide group
+    let intervalHandles = [null, null]; // Guardar los intervalos para poder detenerlos
+
     showSlides(1, 0);
     showSlides(1, 1);
 
+    startSlideShow(0);
+    startSlideShow(1);
+
     function plusSlides(n, no) {
+        stopSlideShow(no); // Detener intervalo automático al interactuar
         showSlides(slideIndex[no] += n, no);
     }
 
@@ -75,6 +81,19 @@ window.addEventListener('DOMContentLoaded', event => {
             x[i].style.display = "none";
         }
         x[slideIndex[no] - 1].style.display = "block";
+    }
+
+    function startSlideShow(no) {
+        intervalHandles[no] = setInterval(function () {
+            showSlides(slideIndex[no] += 1, no);
+        }, slideIntervals[no]);
+    }
+
+    function stopSlideShow(no) {
+        if (intervalHandles[no]) {
+            clearInterval(intervalHandles[no]);
+            intervalHandles[no] = null;
+        }
     }
 
 
