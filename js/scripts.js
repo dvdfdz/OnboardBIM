@@ -57,49 +57,44 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 
-    let slideIndex = [1, 1];
+    let slideIndex = [0, 0];
     let slideId = ["mySlides1", "mySlides2"];
 
-    // Mostrar inicialmente
-    showSlides(1, 0);
-    showSlides(1, 1);
+    function showSlides(no) {
+        const slides = document.getElementsByClassName(slideId[no]);
+        const total = slides.length;
 
-    // Avanzar a la siguiente slide
-    function plusSlides(n, no) {
-        showSlides(slideIndex[no] += n, no);
-    }
-
-    // Mostrar slide actual con transición
-    function showSlides(n, no) {
-        let i;
-        let x = document.getElementsByClassName(slideId[no]);
-        if (n > x.length) { slideIndex[no] = 1 }
-        if (n < 1) { slideIndex[no] = x.length }
-
-        for (i = 0; i < x.length; i++) {
-            x[i].style.opacity = 0;
-            x[i].style.transition = "opacity 1s ease";
-            x[i].style.zIndex = 0;
+        for (let i = 0; i < total; i++) {
+            slides[i].classList.remove("slide-active", "slide-exit");
+            slides[i].style.left = "100%"; // Ocultar fuera de vista
         }
 
-        let currentSlide = x[slideIndex[no] - 1];
-        currentSlide.style.opacity = 1;
-        currentSlide.style.zIndex = 1;
+        // Slide saliente
+        const prevIndex = slideIndex[no];
+        const prevSlide = slides[prevIndex];
+        if (prevSlide) {
+            prevSlide.classList.add("slide-exit");
+            prevSlide.style.left = "-100%";
+        }
+
+        // Actualizar índice
+        slideIndex[no] = (prevIndex + 1) % total;
+
+        // Slide entrante
+        const currentSlide = slides[slideIndex[no]];
+        currentSlide.classList.add("slide-active");
+        currentSlide.style.left = "0";
     }
 
-    // 🔁 Avanzar automáticamente con intervalo aleatorio por slideshow
     function autoAdvance(no) {
-        plusSlides(1, no);
+        showSlides(no);
 
-        // Intervalo aleatorio entre 3000 y 5000 ms
-        const nextInterval = Math.floor(Math.random() * 2000) + 3000;
-
+        const nextInterval = Math.floor(Math.random() * 2000) + 3000; // 3 a 5 seg
         setTimeout(() => autoAdvance(no), nextInterval);
     }
 
-    // Iniciar ambos slideshows con su propio temporizador
-    autoAdvance(0); // mySlides1
-    autoAdvance(1); // mySlides2
+    autoAdvance(0); // Para mySlides1
+    autoAdvance(1); // Para mySlides2
 
 
 
