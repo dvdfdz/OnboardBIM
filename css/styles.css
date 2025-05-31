@@ -11080,3 +11080,16 @@ header.masthead h1, header.masthead .h1 {
   from {opacity: .4}
   to {opacity: 1}
 }
+
+.mySlides1, .mySlides2 {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: 0;
+}
+
+    .mySlides1.show, .mySlides2.show {
+        opacity: 1;
+        z-index: 1;
+    }

@@ -87,17 +87,19 @@ window.addEventListener('DOMContentLoaded', event => {
         currentSlide.style.zIndex = 1;
     }
 
-    // 🔁 Avanzar automáticamente con intervalo aleatorio entre 3 y 5 segundos
-    function autoAdvance() {
-        plusSlides(1, 0);
-        plusSlides(1, 1);
+    // 🔁 Avanzar automáticamente con intervalo aleatorio por slideshow
+    function autoAdvance(no) {
+        plusSlides(1, no);
 
-        // Generar un nuevo intervalo aleatorio
-        const nextInterval = Math.floor(Math.random() * 2000) + 3000; // entre 3000 y 5000 ms
-        setTimeout(autoAdvance, nextInterval);
+        // Intervalo aleatorio entre 3000 y 5000 ms
+        const nextInterval = Math.floor(Math.random() * 2000) + 3000;
+
+        setTimeout(() => autoAdvance(no), nextInterval);
     }
 
-    autoAdvance(); // Iniciar auto-advance
+    // Iniciar ambos slideshows con su propio temporizador
+    autoAdvance(0); // mySlides1
+    autoAdvance(1); // mySlides2
 
 
 
