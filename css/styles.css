@@ -11011,6 +11011,9 @@ header.masthead h1, header.masthead .h1 {
 .carousel1 {
     display: none;
 }
+.carousel2 {
+    display: none;
+}
 
 /* Caption text */
 .text {
