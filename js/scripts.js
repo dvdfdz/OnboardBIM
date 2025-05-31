@@ -1,119 +1,72 @@
-/*!
-* Start Bootstrap - Creative v7.0.7 (https://startbootstrap.com/theme/creative)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
 
-window.addEventListener('DOMContentLoaded', event => {
+/*! Optimized scripts.js */
 
-    // Navbar shrink function
-    var navbarShrink = function () {
-        const navbarCollapsible = document.body.querySelector('#mainNav');
-        if (!navbarCollapsible) {
-            return;
-        }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
-        } else {
-            navbarCollapsible.classList.add('navbar-shrink')
-        }
+window.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.querySelector('#mainNav');
 
+    const navbarShrink = () => {
+        if (!navbar) return;
+        navbar.classList.toggle('navbar-shrink', window.scrollY > 0);
     };
 
-    // Shrink the navbar 
     navbarShrink();
-
-    // Shrink the navbar when page is scrolled
     document.addEventListener('scroll', navbarShrink);
 
-    // Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
+    if (navbar) {
         new bootstrap.ScrollSpy(document.body, {
             target: '#mainNav',
-            rootMargin: '0px 0px -40%',
+            rootMargin: '0px 0px -40%'
         });
-    };
+    }
 
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    document.querySelectorAll('#navbarResponsive .nav-link').forEach(link => {
+        link.addEventListener('click', () => {
             if (window.getComputedStyle(navbarToggler).display !== 'none') {
                 navbarToggler.click();
             }
         });
     });
 
-    // Activate SimpleLightbox plugin for portfolio items
-    new SimpleLightbox({
-        elements: '#portfolio a.portfolio-box'
+    new SimpleLightbox({ elements: '#portfolio a.portfolio-box' });
+
+    const slideIndex = [0, 0];
+    const slideId = ["mySlides1", "mySlides2"];
+    const timeouts = [null, null];
+    const durations = [[], []];
+
+    slideId.forEach((id, no) => {
+        const slides = document.getElementsByClassName(id);
+        durations[no] = Array.from(slides, () => getRandomDuration(3000, 5000));
+        Array.from(slides).forEach(slide => slide.classList.add("slide-fade"));
+        setupHoverEvents(no);
+        showSlide(no);
     });
 
-
-    let slideIndex = [0, 0];
-    let slideId = ["mySlides1", "mySlides2"];
-    let timeouts = [null, null];
-    let slideDurations = [[], []];
-
-    initSlides(0);
-    initSlides(1);
-
-    function initSlides(no) {
-        let slides = document.getElementsByClassName(slideId[no]);
-        slideDurations[no] = Array.from(slides).map(() =>
-            getRandomDuration(3000, 5000)
-        );
-        slideIndex[no] = 0;
-        setupHoverEvents(no);
-
-        for (let slide of slides) {
-            slide.classList.add("slide-fade");
-        }
-
-        showSlide(no);
-    }
-
     function showSlide(no) {
-        let slides = document.getElementsByClassName(slideId[no]);
-        if (slideIndex[no] >= slides.length) slideIndex[no] = 0;
-        if (slideIndex[no] < 0) slideIndex[no] = slides.length - 1;
+        const slides = document.getElementsByClassName(slideId[no]);
+        if (!slides.length) return;
 
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].classList.remove("slide-visible");
-        }
+        Array.from(slides).forEach(slide => slide.classList.remove("slide-visible"));
 
+        slideIndex[no] = (slideIndex[no] + slides.length) % slides.length;
         slides[slideIndex[no]].classList.add("slide-visible");
 
         timeouts[no] = setTimeout(() => {
             slideIndex[no]++;
             showSlide(no);
-        }, slideDurations[no][slideIndex[no]]);
+        }, durations[no][slideIndex[no]]);
     }
-
 
     function getRandomDuration(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
     function setupHoverEvents(no) {
-        let container = document.getElementsByClassName(slideId[no])[0]?.parentElement;
+        const container = document.getElementsByClassName(slideId[no])[0]?.parentElement;
         if (!container) return;
 
-        container.addEventListener("mouseenter", () => {
-            clearTimeout(timeouts[no]);
-            timeouts[no] = null;
-        });
-
-        container.addEventListener("mouseleave", () => {
-            showSlide(no); // Reanuda desde la misma imagen
-        });
+        container.addEventListener("mouseenter", () => clearTimeout(timeouts[no]));
+        container.addEventListener("mouseleave", () => showSlide(no));
     }
-
 });
