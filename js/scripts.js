@@ -1,4 +1,4 @@
-/*!
+﻿/*!
 * Start Bootstrap - Creative v7.0.7 (https://startbootstrap.com/theme/creative)
 * Copyright 2013-2023 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
@@ -57,20 +57,35 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 
-let slideIndex = 0;
-showSlides();
+let slideIndex = [1, 1];
+    let slideId = ["mySlides1", "mySlides2"];
 
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides1");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
-  slides[slideIndex-1].style.display = "block";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
-}
+    // Initial show
+    showSlides(1, 0);
+    showSlides(1, 1);
+
+    // Advance to next slide
+    function plusSlides(n, no) {
+        showSlides(slideIndex[no] += n, no);
+    }
+
+    // Show the current slide
+    function showSlides(n, no) {
+        let i;
+        let x = document.getElementsByClassName(slideId[no]);
+        if (n > x.length) { slideIndex[no] = 1 }
+        if (n < 1) { slideIndex[no] = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex[no] - 1].style.display = "block";
+    }
+
+    // ⏱️ Auto-advance both slideshows every 3 seconds
+    setInterval(() => {
+        plusSlides(1, 0); // advance slideshow 1
+        plusSlides(1, 1); // advance slideshow 2
+    }, 3000); // 3000 ms = 3 seconds
 
 
 
